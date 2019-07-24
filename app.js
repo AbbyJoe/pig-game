@@ -21,6 +21,8 @@ GAME RULES:
 var scores, roundScores, activePlayer, gamePlaying;
 init();
 
+var lastDice;
+
 //button-roll function
 const btnRoll = document.querySelector(".btn-roll");
 
@@ -35,7 +37,12 @@ btnRoll.addEventListener("click", () => {
         diceDOM.src = "dice-" + dice + ".png";
 
         //update the round score
-        if (dice !== 1) {
+        if(dice === 6 && lastDice === 6){
+            //palyer looses score
+            scores[activePlayer] = 0;
+            document.querySelector("#score-" + activePlayer).textContent = '0';
+            nextPlayer();
+        } else if (dice !== 1) {
             //add score
             roundScores += dice;
             document.querySelector("#current-" + activePlayer).textContent = roundScores;
@@ -43,14 +50,11 @@ btnRoll.addEventListener("click", () => {
             //next player
             nextPlayer();
         }
-  
+        lastDice = dice;
     }
-    
 });
 
-
 const buttonHold = document.querySelector(".btn-hold");
-
 buttonHold.addEventListener('click', () => {
     if(gamePlaying){
         //add current score to global score 

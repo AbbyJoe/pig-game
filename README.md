@@ -1,5 +1,5 @@
 
-This is a dice Rolling Game between Two players you can player with your friends 
+This is a dice Rolling Game between Two players you can play with your friends 
 GAME RULES:
 
 - The game has 2 players, playing in rounds
